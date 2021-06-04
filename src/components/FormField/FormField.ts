@@ -3,10 +3,10 @@ import Vue from 'vue'
 import { VueConstructor } from 'vue/types/umd'
 
 interface FormInjectedComponent {
-  form: Record<string, any> | null,
-  model: Record<string, any> | null,
-  origin: Record<string, any> | null,
-  local: Record<string, any> | null
+  form: Record<string, unknown> | null,
+  model: Record<string, unknown> | null,
+  origin: Record<string, unknown> | null,
+  local: Record<string, unknown> | null
 }
 
 export default (Vue as VueConstructor<Vue & FormInjectedComponent>).extend({
@@ -25,8 +25,8 @@ export default (Vue as VueConstructor<Vue & FormInjectedComponent>).extend({
     },
     local: {
       from: Local,
-      default: () => null
-    }
+      default: () => null,
+    },
   },
   props: {
     name: {
@@ -39,11 +39,19 @@ export default (Vue as VueConstructor<Vue & FormInjectedComponent>).extend({
       return Object.keys(this.$scopedSlots).length === 1
     },
     originValue() {
-      return this.form?.getOrigin(this.name)
+      const { getOrigin } = this.form || {}
+      if (typeof getOrigin === 'function') {
+        return getOrigin(this.name)
+      }
+      return undefined;
     },
     localValue: {
       get () {
-        return this.form?.get(this.name)
+        const { get } = this.form || {}
+        if (typeof get === 'function') {
+          return get(this.name)
+        }
+        return undefined
       },
       set (val) {
         this.onInput(val)
@@ -57,15 +65,22 @@ export default (Vue as VueConstructor<Vue & FormInjectedComponent>).extend({
     },
   },
   methods: {
-    onInput (newVal: any) {
-      this.form?.setField(this.name, newVal)
+    onInput (newVal: unknown) {
+      const { setField } = this.form || {}
+      if (typeof setField === 'function') {
+        setField(this.name, newVal)
+      }
       this.$emit('input', this.name, newVal)
     },
     reset () {
-      this.form?.setField(this.name, this.originValue)
+      const { setField } = this.form || {}
+      if (typeof setField === 'function') {
+        setField(this.name, this.originValue)
+      }
       this.onInput(this.originValue)
-    }
+    },
   },
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   render (h): any {
     if (!this.isSlotValid) {
       throw new Error('FormField can only contain one root element')
@@ -79,11 +94,11 @@ export default (Vue as VueConstructor<Vue & FormInjectedComponent>).extend({
         pristine: this.pristine,
         dirty: this.dirty,
         value: this.localValue,
-        reset: this.reset
+        reset: this.reset,
       })
       return Array.isArray(vnodes) && vnodes.length ? vnodes[0] : null
     }
 
     return null
-  }
+  },
 })

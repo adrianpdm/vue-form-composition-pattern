@@ -7,7 +7,7 @@ import _cloneDeep from 'lodash/cloneDeep'
 
 export default Vue.extend({
   name: 'Form',
-  provide(): Record<string, any> {
+  provide(): Record<string, unknown> {
     return {
       [Form]: this,
       [Model]: this.$props.model,
@@ -17,25 +17,25 @@ export default Vue.extend({
   },
   props: {
     model: {
-      type: Object as PropType<Record<string, any>>,
+      type: Object as PropType<Record<string, unknown>>,
       required: true,
-      default: () => null
+      default: () => null,
     },
     origin: {
       type: [
         Object,
-        Function
-      ] as PropType<Record<string, any> | {(): Promise<any>}>,
-      default: () => null
+        Function,
+      ] as PropType<Record<string, unknown> | {(): Promise<unknown>}>,
+      default: () => null,
     },
     tag: {
       type: String,
-      default: 'div'
+      default: 'div',
     },
     slim: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data: () => ({
     local: null,
@@ -82,22 +82,24 @@ export default Vue.extend({
         } finally {
           this.isLoading = false
         }
-      }
-    }
+      },
+    },
   },
   methods: {
     /** @public */
-    set (name: string, value: any) {
+    set (name: string, value: unknown) {
       if (!this.local) {
         return
       }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { local }: any = this
       if (name.includes('.')) {
-        _set((this.local as any), name, value)
+        _set(local, name, value)
       } else {
-        this.$set((this.local as any), name, value)
+        this.$set(local, name, value)
       }
     },
-    get$ (obj: Record<string, any> | null, name?: string) {
+    get$ (obj: Record<string, unknown> | null, name?: string) {
       if (!name) {
         throw new Error('name must be supplied')
       } else if (name.includes('.')) {
@@ -112,26 +114,27 @@ export default Vue.extend({
     },
     /** @public */
     getOrigin (name?: string) {
-      return this.get$(this.origin, name)
+      return this.get$(this.origin$, name)
     },
     /** @public */
     reset (): void {
       this.local = _cloneDeep(this.origin$)
     },
-    renderScopedSlot (slotName: string, props?: any) {
+    renderScopedSlot (slotName: string, props?: Record<string, unknown>) {
       const scopedSlots = this.$scopedSlots[slotName]?.(props)
       if (this.slim && this.isActuallySlim) {
         return scopedSlots?.[0]
       }
       return this.$createElement(this.tag, scopedSlots)
-    }
+    },
   },
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   render (h): any {
     const errorSlotProps = {
-      error: this.error
+      error: this.error,
     }
     const loadingSlotProps = {
-      pending: this.isLoading
+      pending: this.isLoading,
     }
     const defaultSlotProps = {
       model: this.model,
@@ -145,7 +148,7 @@ export default Vue.extend({
       return this.renderScopedSlot('combined', {
         ...errorSlotProps,
         ...loadingSlotProps,
-        ...defaultSlotProps
+        ...defaultSlotProps,
       })
     }
     if (this.isLoading) {
@@ -157,5 +160,5 @@ export default Vue.extend({
     }
 
     return this.renderScopedSlot('default', defaultSlotProps)
-  }
+  },
 })
