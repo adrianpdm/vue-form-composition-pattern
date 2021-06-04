@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src",
+    "dev",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+  ],
+  "compilerOptions": {
+    "paths": {
+      "@dev/*": [
+        "dev/*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ]
+    }
+  }
+}

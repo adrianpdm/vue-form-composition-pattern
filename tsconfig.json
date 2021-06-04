@@ -21,9 +21,6 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@dev/*": [
-        "dev/*"
-      ],
       "@/*": [
         "src/*"
       ],
@@ -40,12 +37,9 @@
   },
   "include": [
     "types",
-    "dev",
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx",
   ],
   "exclude": [
     "node_modules",
