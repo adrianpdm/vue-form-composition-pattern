@@ -2,7 +2,7 @@
   "name": "@apdm/vue-form-composition-pattern",
   "version": "0.0.1",
   "private": false,
-  "description": "Form composition design pattern form for VueJS",
+  "description": "Form composition design pattern for VueJS",
   "author": {
     "name": "Adrian",
     "email": "adrian.pdmh@gmail.com"
