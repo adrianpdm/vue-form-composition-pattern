@@ -16,7 +16,8 @@
       "chai"
     ],
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types",
+      "types"
     ],
     "baseUrl": ".",
     "paths": {
@@ -38,12 +39,13 @@
     ]
   },
   "include": [
+    "types",
     "dev",
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
   ],
   "exclude": [
     "node_modules",
