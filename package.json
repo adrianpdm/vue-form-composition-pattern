@@ -22,7 +22,7 @@
     "design pattern"
   ],
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --mode development dev/main.js",
     "build:lib": "node scripts/build-lib.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
