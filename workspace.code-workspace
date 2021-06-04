@@ -1,18 +1,18 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"path-intellisense.mappings": {
-			"@dev/": "${workspaceFolder}/dev/",
-			"@/": "${workspaceFolder}/src/"
-		},
-		"eslint.workingDirectories": [
-			"src",
-			"dev"
-		],
-		"explorer.compactFolders": false
-	}
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "path-intellisense.mappings": {
+      "@dev/": "${workspaceFolder}/dev/",
+      "@/": "${workspaceFolder}/src/"
+    },
+    "eslint.workingDirectories": [
+      "src",
+      "dev"
+    ],
+    "explorer.compactFolders": false
+  }
 }
