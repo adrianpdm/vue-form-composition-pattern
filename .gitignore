@@ -26,3 +26,4 @@ pnpm-debug.log*
 es5
 lib
 lib-temp
+dev/views/Playground.vue

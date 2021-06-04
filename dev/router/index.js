@@ -1,14 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
+
+const playground = new Promise((resolve) => {
+  import(
+    /* webpackMode: "lazy" */
+    '@dev/views/Playground.vue'
+  )
+    .catch((e) => {
+      if (e && e.code === 'MODULE_NOT_FOUND') {
+        console.warn(
+          '%cPlease clone Playground.template.vue into your own playground',
+          'font-size: 2rem; font-weight: bold;'
+        )
+      }
+      throw e
+    })
+    .then(resolve)
+})
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Playground',
+    component: () => playground
   },
 ]
 
