@@ -1,0 +1,73 @@
+{
+  "name": "@apdm/vue-form-composition-pattern",
+  "version": "0.0.1",
+  "private": false,
+  "description": "Form composition design pattern form for VueJS",
+  "author": {
+    "name": "Adrian",
+    "email": "adrian.pdmh@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrianpdm/vue-pattern-form.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adrianpdm/vue-pattern-form/issues"
+  },
+  "keywords": [
+    "vue form composition pattern",
+    "vue",
+    "vue form",
+    "composition pattern",
+    "design pattern"
+  ],
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint"
+  },
+  "types": "types/index.d.ts",
+  "main": "dist/vue-pattern-form.js",
+  "module": "dist/vue-pattern-form.js",
+  "jsdelivr": "dist/vue-pattern-form.js",
+  "unpkg": "dist/vue-pattern-form.js",
+  "files": [
+    "src/",
+    "dist/",
+    "lib/",
+    "types/"
+  ],
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/lodash-es": "^4.17.4",
+    "@types/mocha": "^5.2.4",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-plugin-unit-mocha": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "@vue/test-utils": "^1.0.3",
+    "chai": "^4.1.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "typescript": "~4.1.5",
+    "vue-template-compiler": "^2.6.11",
+    "vue-router": "^3.2.0",
+    "vuex": "^3.4.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.11"
+  }
+}
