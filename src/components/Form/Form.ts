@@ -5,7 +5,6 @@ import _set from 'lodash/set'
 import _get from 'lodash/get'
 import _cloneDeep from 'lodash/cloneDeep'
 
-/* @vue/component */
 export default Vue.extend({
   name: 'Form',
   provide(): Record<string, any> {
@@ -87,6 +86,7 @@ export default Vue.extend({
     }
   },
   methods: {
+    /** @public */
     set (name: string, value: any) {
       if (!this.local) {
         return
@@ -106,12 +106,15 @@ export default Vue.extend({
         return obj?.[name]
       }
     },
+    /** @public */
     get (name?: string) {
       return this.get$(this.local, name)
     },
+    /** @public */
     getOrigin (name?: string) {
       return this.get$(this.origin, name)
     },
+    /** @public */
     reset (): void {
       this.local = _cloneDeep(this.origin$)
     },
