@@ -1,3 +1,3 @@
-# vue-pattern-form
+# vue-form-composition-pattern
 
 TBD.
