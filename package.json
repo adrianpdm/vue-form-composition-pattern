@@ -63,11 +63,11 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "typescript": "~4.1.5",
-    "vue-template-compiler": "^2.6.11",
     "vue-router": "^3.2.0",
+    "vue-template-compiler": "^2.6.11",
     "vuex": "^3.4.0"
   },
   "peerDependencies": {
-    "vue": "^2.6.11"
+    "vue": "^2.6.13"
   }
 }
