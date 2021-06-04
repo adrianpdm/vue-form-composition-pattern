@@ -23,5 +23,6 @@ pnpm-debug.log*
 *.sw?
 
 # Build folders
+es5
 lib
 lib-temp
